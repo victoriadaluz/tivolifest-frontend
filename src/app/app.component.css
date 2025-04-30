@@ -1,23 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {
-}
-
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-}
-
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
-}
-
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-}
-
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
-}
 
 * {
   font-family: "Inter", sans-serif;
@@ -153,7 +134,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.7)
+  );
   backdrop-filter: blur(2px);
   z-index: 1;
 }
@@ -172,6 +157,78 @@
   padding: 0 0.5rem;
 }
 
+.container-section-3 {
+  display: flex;
+  width: 100%;
+  padding: 10rem;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  flex-direction: column;
+}
+
+mat-accordion {
+  background-color: transparent;
+  max-width: 80%;
+  margin-bottom: 8rem;
+}
+
+mat-expansion-panel {
+  width: 100%;
+  background-color: #ed2f59;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+mat-expansion-panel-header {
+  font-size: 4rem;
+  padding: 3rem;
+  line-height: 1.2;
+  flex-direction: column !important; /* ¡clave! */
+  align-items: center;
+  min-height: unset !important; /* evita el mínimo que lo puede ocultar */
+  height: auto !important;
+}
+
+mat-panel-title {
+  font-size: 4rem !important;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  display: block;
+}
+
+mat-panel-description {
+  display: none;
+}
+
+mat-expansion-panel p {
+  font-size: 2.5rem;
+  color: white;
+  padding: 3rem;
+  line-height: 1.6;
+}
+
+/**************MEDIA QUERIES**************/
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+}
 @media (min-width: 768px) {
   .navbar-nav > li > a {
     padding-top: 26.5px;
