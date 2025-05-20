@@ -5,7 +5,8 @@
 }
 .navbar {
   min-height: 90px;
-  font-size: 32px;
+  font-size: 36px;
+  font-weight: 500;
 }
 
 .navbar-brand {
@@ -24,6 +25,10 @@
 .navbar-nav {
   display: flex;
   justify-content: space-between;
+}
+.nav-item {
+  display: flex;
+  margin-right: 3rem;
 }
 #navbarNavAltMarkup {
   margin-right: 76px;
@@ -98,13 +103,21 @@
 }
 
 .container-section-2 {
-  background-image: url("/assets/background-2.jpg");
-  color: white;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 15rem;
-  border-radius: 1rem;
-  box-sizing: border-box;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #085875, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: aliceblue;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .container-section-2-content {
@@ -112,6 +125,7 @@
   flex-direction: column;
   gap: 4rem;
   align-items: center;
+  padding: 3rem;
 }
 
 .cards-row {
@@ -129,7 +143,11 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
+
 .cards-section::before {
   content: "";
   position: absolute;
@@ -190,11 +208,13 @@ mat-expansion-panel-header {
 }
 
 mat-panel-title {
-  font-size: 4rem !important;
+  font-size: 3rem !important;
   font-weight: bold;
   color: white;
   width: 100%;
   display: block;
+  min-width: 2000px;
+  text-align: center;
 }
 
 mat-panel-description {
@@ -207,35 +227,59 @@ mat-expansion-panel p {
   padding: 3rem;
   line-height: 1.6;
 }
-
-/**************MEDIA QUERIES**************/
-
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {
+.whatsapp #float-wa {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  border-right: none;
+  text-align: center;
+  font-size: 30px;
+  z-index: 100;
+  transform: all 0.5s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 0;
+}
+#float-wa svg {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  width: 7rem;
+  height: 5rem;
+}
+#float-wa::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: block;
+  background-color: #e73c7e;
+  border-radius: 50%;
+  -webkit-animation: pulse-border 1500ms ease-out infinite;
+  animation: pulse-border 1500ms ease-out infinite;
+}
+#float-wa::focus {
+  border: none;
+  outline: none;
 }
 
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-}
-
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
-}
-
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-}
-
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
-}
-@media (min-width: 768px) {
-  .navbar-nav > li > a {
-    padding-top: 26.5px;
-    padding-bottom: 26.5px;
-    line-height: 27px;
+@keyframes pulse-border {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale (1);
+    opacity: 1;
+  }
+  100%{
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale (1);
+    opacity: 1;
   }
 }
+/**************MEDIA QUERIES**************/
+
 /* Tablets (>=768px y <992px): 3 cards por fila */
 @media (min-width: 768px) and (max-width: 991px) {
   .container-section-2-content-cards {
@@ -244,11 +288,20 @@ mat-expansion-panel p {
 }
 
 /* Móviles: scroll horizontal */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
   .cards-row {
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-bottom: 1rem;
+  }
+  .container-section {
+    min-height: 100vh;
+    padding: 2rem;
   }
 
   .container-section-2-content-cards {
@@ -257,6 +310,51 @@ mat-expansion-panel p {
   }
   .container-content {
     max-width: 700px;
+  }
+  .container-content h2 {
+    font-size: 3rem;
+  }
+
+  .container-content p {
+    font-size: 2rem;
+  }
+
+  .container-content ul {
+    font-size: 1.8rem;
+  }
+
+  .container-content-list {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .cards-row {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 1rem;
+  }
+
+  .container-section-2-content-cards img {
+    max-width: 150px;
+  }
+
+  .container-section-2-content-cards p {
+    font-size: 1.6rem;
+  }
+
+  mat-panel-title {
+    font-size: 2rem !important;
+    min-width: unset; /* <-- esto es clave */
+    width: 100%;
+  }
+  mat-expansion-panel-header {
+    font-size: 2rem;
+    padding: 1.5rem;
+  }
+
+  mat-expansion-panel p {
+    font-size: 1.6rem;
+    padding: 2rem;
   }
 }
 
