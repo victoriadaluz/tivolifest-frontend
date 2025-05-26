@@ -1,17 +1,86 @@
-*{
-    font-family: "Inter", sans-serif;;
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
-.w-100{
-    height: 2000px !important;
+.carousel {
+  width: 100%;
+  position: relative;
 }
-h5{
-    text-align: center;
-    font-weight: 600;
-    font-size: 4rem;
 
+/* Configuración para Desktop (altura fija) */
+.carousel-inner,
+.carousel-item,
+.carousel-item img {
+  width: 100%;
+  height: 80vh; /* Altura generosa para desktop */
+  max-height: 800px; /* Límite máximo */
+  min-height: 500px; /* Mínimo para desktop */
+  object-fit: cover;
 }
-p{
-    text-align: center;
-    font-size: 2rem;
+
+/* Configuración para Mobile*/
+@media (max-width: 768px) {
+  .carousel-inner,
+  .carousel-item,
+  .carousel-item img {
+    height: 60vh; /* Más compacto en móvil */
+    min-height: 300px; /* Mínimo para móvil */
+    max-height: 500px; /* Máximo para móvil */
+  }
+}
+
+/* Ajustes para pantallas muy grandes (4K) */
+@media (min-width: 2500px) {
+  .carousel-inner,
+  .carousel-item,
+  .carousel-item img {
+    height: 90vh;
+    max-height: 2000px;
+  }
+}
+
+/* Controles */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 8%;
+}
+
+/* Textos */
+.carousel-caption {
+  bottom: 25%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+}
+
+.carousel-caption h5 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.carousel-caption p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 576px) {
+  .carousel-caption {
+    bottom: 15%;
+    padding: 1rem;
+    width: 90%;
+  }
+  
+  .carousel-caption h5 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel-caption p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
 }
