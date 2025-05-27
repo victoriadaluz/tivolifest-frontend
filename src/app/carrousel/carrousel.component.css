@@ -49,7 +49,6 @@
 
 /* Textos */
 .carousel-caption {
-  bottom: 25%;
   background: rgba(0, 0, 0, 0.7);
   padding: 1.5rem;
   border-radius: 0.5rem;
@@ -76,7 +75,6 @@
   
   .carousel-caption h5 {
     font-size: 1.2rem;
-    margin-bottom: 0.5rem;
   }
   
   .carousel-caption p {

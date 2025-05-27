@@ -5,8 +5,8 @@
 }
 /* app.component.css */
 .navbar {
-  min-height: 5.625rem; /* 90px en rem */
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* Tamaño adaptable */
+  min-height: 3rem; /* 90px en rem */
+  font-size: clamp(1rem, 2vw, 1.25rem); /* Tamaño adaptable */
   font-weight: 500;
   padding: 0.5rem 1rem;
 }
@@ -17,14 +17,14 @@
 
 .navbar-brand img {
   width: auto;
-  height: 4rem; /* Tamaño más pequeño para móviles */
+  height: 2rem; /* Tamaño más pequeño para móviles */
   max-width: 100%;
 }
 
 @media (min-width: 768px) {
   .navbar-brand img {
-    height: 6.875rem; /* 110px en rem */
-    width: 12.5rem; /* 200px en rem */
+    height: 4.875rem; /* 110px en rem */
+    width: 8rem; /* 200px en rem */
   }
 }
 
