@@ -1,11 +1,24 @@
-import { Component } from '@angular/core';
-
+import { Component, Input} from '@angular/core';
+import { NgFor,NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-gallery',
-  imports: [],
   templateUrl: './gallery.component.html',
-  styleUrl: './gallery.component.css'
+  styleUrls: ['./gallery.component.css'],
+  imports: [NgFor, NgIf, CommonModule]
 })
 export class GalleryComponent {
+  @Input() images: string[] = [];
+  @Input() title: string = '';
+  isOpen = false;
 
+  open(images: string[], title: string) {
+    this.images = images;
+    this.title = title;
+    this.isOpen = true;
+  }
+
+  close() {
+    this.isOpen = false;
+  }
 }
