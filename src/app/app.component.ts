@@ -1,12 +1,10 @@
 import { RouterOutlet } from '@angular/router';
 import { CarrouselComponent } from './carrousel/carrousel.component';
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewChild, AfterViewInit } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { IonIcon } from '@ionic/angular/standalone';
-import { GalleryService } from './services/gallery.service';
 import { NgFor, CommonModule } from '@angular/common';
-import { ViewChild } from '@angular/core';
-import { GalleryComponent } from './gallery/gallery.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -21,9 +19,11 @@ import { GalleryComponent } from './gallery/gallery.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  @ViewChild('modal') modal!: GalleryComponent;
+export class AppComponent{
+  currentIndex = 0;
   title = 'tivoli-front-end';
+  showModal = false;
+  currentGallery: { title: string; images: string[] } | null = null;
   buttons = [
     {
       key: 'simulador',
@@ -32,12 +32,12 @@ export class AppComponent {
     },
     { key: 'pelotero', title: 'Pelotero', icon: 'Niños.svg' },
     {
-      key: 'cancha de futbol',
+      key: 'cancha',
       title: 'Cancha de futbol',
       icon: 'canchita-futbol.svg',
     },
     {
-      key: 'pantalla interactiva',
+      key: 'pantalla-interactiva',
       title: 'Pantalla interactiva',
       icon: 'pantalla-juegos.svg',
     },
@@ -47,56 +47,76 @@ export class AppComponent {
     { key: 'animacion', title: 'Animación', icon: 'Animacion.svg' },
     { key: 'pisoloco', title: 'Piso Loco', icon: 'pisoloco.svg' },
   ];
-  currentGallery: { title: string; images: string[] } | null = null;
-  showModal = false;
+get safeCurrentGallery() {
+    return this.currentGallery ?? { title: '', images: [] };
+  }
+  prevImage() {
+    if (this.currentGallery?.images) {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.currentGallery.images.length) %
+        this.currentGallery.images.length;
+    }
+  }
 
-  readonly panelOpenState = signal(false);
-  constructor(private galleryService: GalleryService) {}
-
-openGallery(key: string, title: string) {
-  // Mapeo de nombres de botón a carpetas (si difieren)
-  const folderNames: {[key: string]: string} = {
-    'cancha de futbol': 'cancha',
-    'pantalla interactiva': 'pantalla',
-    'piso loco': 'pisoloco',
-    'pelotero': 'pelotero',
-    'samba': 'samba',
-    'robots': 'robots',
-    'playroom': 'playroom',
-    'cascada': 'cascada',
-    'fichines': 'fichines',
-    'simulador': 'simulador'
-    // Agrega otros mapeos si los nombres no coinciden
-  };
-
-  // Obtiene el nombre de la carpeta o usa el key por defecto
-  const folder = folderNames[key] || key.toLowerCase();
-
-  // Mapeo de imágenes por categoría (nombres exactos de archivos)
-  const imagesMap: {[key: string]: string[]} = {
-    pelotero: ['pelotero_1.jpg', 'pelotero_2.jpg', 'pelotero_3.jpg'],
-    simulador: ['simulador_1.jpg', 'simulador_2.jpg'],
-    cancha: ['cancha_1.jpg', 'cancha_2.jpg'],
-    pantalla: ['pantalla_1.jpg', 'pantalla_2.jpg'],
-    cascada: ['cascada_1.jpg', 'cascada_2.jpg'],
-    playroom: ['playroom_1.jpg', 'playroom_2.jpg'],
-    fichines: ['fichines_1.jpg', 'fichines_2.jpg'],
-    animacion: ['animacion_1.jpg', 'animacion_2.jpg'],
-    pisoloco: ['pisoloco_1.jpg', 'pisoloco_2.jpg'],
-    robots: ['robot_1.JPG', 'robot_2.JPG'],
-    samba: ['samba_1.jpg', 'samba_2.jpg']
-  };
-
-  this.currentGallery = {
-    title: title,
-    images: imagesMap[folder]?.map(img => `assets/${folder}/${img}`) || []
-  };
-  this.showModal = true;
+  nextImage() {
+    if (!this.currentGallery) return;
+    this.currentIndex = (this.currentIndex + 1) % this.currentGallery.images.length;
+  }
+  openGallery(key: string, title: string) {
+    // Mapeo de imágenes por categoría (nombres exactos de archivos)
+    const imagesMap: { [key: string]: string[] } = {
+      pelotero: ['pelotero_1.jpg', 'pelotero_2.jpg', 'pelotero_3.jpg'],
+      simulador: [
+        'simulador_1.jpg',
+        'simulador_2.JPG',
+        'simulador_3.JPG',
+        'simulador_4.JPG',
+        'simulador_5.jpg',
+        'simulador_6.JPG',
+      ],
+      cancha: ['canchafutbol_1.jpg'],
+      pantalla: [
+        'pantalla_1.jpg',
+        'pantalla_2.jpg',
+        'pantalla_3.jpg',
+        'pantalla_4.jpg',
+        'pantalla_5.jpg',
+        'pantalla_6.jpg',
+      ],
+      cascada: ['cascada_1.jpg'],
+      playroom: ['playroom_1.jpg', 'playroom_2.jpg'],
+      fichines: ['fichines_1.jpg', 'fichines_2.jpg'],
+      animacion: ['animacion_1.jpg', 'animacion_2.jpg'],
+      pisoloco: [
+        'pisoloco_1.jpg',
+        'pisoloco_2.JPG',
+        'pisoloco_3.JPG',
+        'pisoloco_4.jpg',
+        'pisoloco_5.JPG',
+      ],
+      robots: ['robot_1.JPG', 'robot_2.JPG'],
+      samba: [
+        'samba_1.jpg',
+        'samba_2.jpg',
+        'samba_3.DNG',
+        'samba_4.DNG',
+        'samba_5.jpg',
+        'samba_6.jpg',
+        'samba_7.jpg',
+        'samba_8.jpg',
+      ],
+    };
+    const folder = key.toLowerCase().replace(/\s+/g, '');
+    const images = imagesMap[folder]?.map(img => `assets/${folder}/${img}`) || [];
+    this.currentGallery = {
+      title: title,
+      images:images
+    };
+    this.currentIndex = 0;
+    this.showModal = true;
+  }
+  closeModal() {
+    this.showModal = false;
+    this.currentGallery = null;
+  }
 }
-closeModal() {
-  this.showModal = false;
-  this.currentGallery = null;
-}
-}
-
-

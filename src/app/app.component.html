@@ -211,8 +211,9 @@
           <mat-panel-description></mat-panel-description>
         </mat-expansion-panel-header>
         <p>
-          El evento debe estar pago 48hs antes, sin excepción. En el día del
-          evento pueden abonarse los adicionales.
+          El evento debe estar pago 10 días antes, sin excepción. En el día del
+          evento pueden abonarse los adicionales. Caso contrario, se liberará la
+          fecha y día elegidos.
         </p>
       </mat-expansion-panel>
     </mat-accordion>
@@ -278,20 +279,29 @@
     </ul>
     <p class="text">2025 | Todos los derechos reservados</p>
   </footer>
-<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+<div class="modal-overlay" *ngIf="showModal && currentGallery" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <button class="close-button" (click)="closeModal()">×</button>
-    <h2>{{ currentGallery?.title }}</h2>
-    <!-- Mensaje si no hay imágenes -->
-    <p *ngIf="!currentGallery?.images?.length">No hay imágenes disponibles</p>
-    <!-- Galería -->
-    <div class="gallery-grid" *ngIf="currentGallery?.images?.length">
-      <img *ngFor="let img of currentGallery?.images" 
-           [src]="img" 
-           [alt]="currentGallery?.title"
-           class="gallery-image">
+    <h2>{{ currentGallery.title }}</h2>
+
+    <!-- Carrusel -->
+    <div class="carousel-container">
+      <img 
+        [src]="currentGallery.images[currentIndex]" 
+        [alt]="currentGallery.title" 
+        class="gallery-image"
+        *ngIf="currentGallery.images.length > 0"
+      >
+      
+      <button class="carousel-button prev" (click)="prevImage(); $event.stopPropagation()">‹</button>
+      <button class="carousel-button next" (click)="nextImage(); $event.stopPropagation()">›</button>
+      
+      <div class="pagination" *ngIf="currentGallery.images.length > 1">
+        <span *ngFor="let img of currentGallery.images; let i = index"
+              [class.active]="i === currentIndex"
+              (click)="currentIndex = i; $event.stopPropagation()"></span>
+      </div>
     </div>
   </div>
 </div>
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
