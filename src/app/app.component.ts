@@ -65,7 +65,7 @@ get safeCurrentGallery() {
   openGallery(key: string, title: string) {
     // Mapeo de imágenes por categoría (nombres exactos de archivos)
     const imagesMap: { [key: string]: string[] } = {
-      pelotero: ['pelotero_1.jpg', 'pelotero_2.jpg', 'pelotero_3.jpg'],
+      pelotero: ['pelotero_1.jpg', 'pelotero_2.jpg', 'pelotero_3.jpg', 'pelotero_4.jpg', 'pelotero_5.jpg', 'pelotero_6.jpg'],
       simulador: [
         'simulador_1.jpg',
         'simulador_2.JPG',
@@ -74,7 +74,7 @@ get safeCurrentGallery() {
         'simulador_5.jpg',
         'simulador_6.JPG',
       ],
-      cancha: ['canchafutbol_1.jpg'],
+      cancha: ['canchafutbol_1.jpg', 'canchafutbol_2.jpg', 'canchafutbol_3.jpg', 'canchafutbol_4.jpg', 'canchafutbol_5.jpg'],
       pantalla: [
         'pantalla_1.jpg',
         'pantalla_2.jpg',
@@ -83,10 +83,10 @@ get safeCurrentGallery() {
         'pantalla_5.jpg',
         'pantalla_6.jpg',
       ],
-      cascada: ['cascada_1.jpg'],
-      playroom: ['playroom_1.jpg', 'playroom_2.jpg'],
+      cascada: ['cascada_1.jpg', 'cascada_2.jpg'],
+      playroom: ['playroom_1.jpg', 'playroom_2.jpg', 'playroom_3.jpg', 'playroom_4.jpg', 'playroom_5.jpg', 'playroom_6.jpg', 'playroom_7.jpg'],
       fichines: ['fichines_1.jpg', 'fichines_2.jpg'],
-      animacion: ['animacion_1.jpg', 'animacion_2.jpg'],
+      animacion: ['animacion_1.jpg', 'animacion_2.jpg', 'animacion_3.jpg'],
       pisoloco: [
         'pisoloco_1.jpg',
         'pisoloco_2.JPG',
@@ -94,7 +94,7 @@ get safeCurrentGallery() {
         'pisoloco_4.jpg',
         'pisoloco_5.JPG',
       ],
-      robots: ['robot_1.JPG', 'robot_2.JPG'],
+      robots: ['robots_1.JPG', 'robots_2.JPG', 'robots_3.JPG', 'robots_4.JPG', 'robots_5.jpg', 'robots_7.jpg', 'robots_8.jpg', 'robots_9.JPG'],
       samba: [
         'samba_1.jpg',
         'samba_2.jpg',
