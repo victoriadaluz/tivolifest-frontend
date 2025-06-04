@@ -37,7 +37,7 @@ export class AppComponent{
       icon: 'canchita-futbol.svg',
     },
     {
-      key: 'pantalla-interactiva',
+      key: 'pantalla',
       title: 'Pantalla interactiva',
       icon: 'pantalla-juegos.svg',
     },
