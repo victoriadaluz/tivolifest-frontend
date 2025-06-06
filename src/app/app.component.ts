@@ -65,7 +65,7 @@ get safeCurrentGallery() {
   openGallery(key: string, title: string) {
     // Mapeo de imágenes por categoría (nombres exactos de archivos)
     const imagesMap: { [key: string]: string[] } = {
-      pelotero: ['pelotero_1.jpg', 'pelotero_2.jpg', 'pelotero_3.jpg', 'pelotero_4.jpg', 'pelotero_5.jpg', 'pelotero_6.jpg'],
+      pelotero: ['pelotero_1.webp', 'pelotero_2.webp', 'pelotero_3.webp', 'pelotero_4.webp', 'pelotero_5.webp', 'pelotero_6.webp'],
       simulador: [
         'simulador_1.jpg',
         'simulador_2.JPG',
@@ -94,7 +94,7 @@ get safeCurrentGallery() {
         'pisoloco_4.jpg',
         'pisoloco_5.JPG',
       ],
-      robots: ['robots_1.JPG', 'robots_2.JPG', 'robots_3.JPG', 'robots_4.JPG', 'robots_5.jpg', 'robots_7.jpg', 'robots_8.jpg', 'robots_9.JPG'],
+      robots: ['robots_1.webp', 'robots_2.webp', 'robots_3.webp', 'robots_4.webp', 'robots_5.webp', 'robots_7.webp', 'robots_8.webp', 'robots_9.webp'],
       samba: [
         'samba_1.jpg',
         'samba_2.jpg',

@@ -5,10 +5,11 @@
 }
 /* app.component.css */
 .navbar {
-  min-height: 3rem; /* 90px en rem */
-  font-size: clamp(1rem, 2vw, 1.25rem); /* Tamaño adaptable */
+  min-height: 3rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 500;
   padding: 0.5rem 1rem;
+  background-color: #000 !important;
 }
 
 .navbar-brand {
@@ -17,31 +18,48 @@
 
 .navbar-brand img {
   width: auto;
-  height: 2rem; /* Tamaño más pequeño para móviles */
+  height: 2rem;
   max-width: 100%;
+  transition: all 0.3s ease;
 }
 
 @media (min-width: 768px) {
   .navbar-brand img {
-    height: 4.875rem; /* 110px en rem */
-    width: 8rem; /* 200px en rem */
+    height: 4.875rem;
+    width: 8rem;
   }
 }
 
-.nav-item {
+.nav-link {
   margin-right: 1rem;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.nav-link.active {
+  font-weight: bold;
 }
 
 @media (max-width: 767px) {
   #navbarNavAltMarkup {
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.95);
     padding: 1rem;
-    margin-right: 0;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
   }
   
-  .nav-item {
+  .nav-link {
     margin-right: 0;
     margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar-collapse {
+    text-align: center;
   }
 }
 
@@ -117,10 +135,13 @@
 
 @media (max-width: 768px) {
   .container-content-titles,
-  .container-content-list {
+  .container-content-list
+  .container-content h2
+  {
     animation: none !important;
     opacity: 1 !important;
     clip-path: none !important;
+    text-wrap: wrap;
   }
 }
 

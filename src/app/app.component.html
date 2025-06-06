@@ -1,36 +1,30 @@
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 </style>
-
-<nav
-  class="navbar fixed-top navbar-expand-sm navbar-dark"
-  style="background-color: black"
->
-  <a class="navbar-brand" href="#">
-    <img src="assets\logo (1) 1.png" width="200" height="110" alt="" />
-  </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div
-    class="collapse navbar-collapse justify-content-end"
-    id="navbarNavAltMarkup"
-  >
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#inicio"
-        >Inicio <span class="sr-only"> </span
-      ></a>
-      <a class="nav-item nav-link" href="#propuestas">Propuestas</a>
-      <a class="nav-item nav-link" href="#galeria">Galería</a>
-      <a class="nav-item nav-link" href="#faq">Preguntas frecuentes</a>
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-black">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/logo.png" width="200" height="110" alt="" class="d-none d-md-block">
+      <img src="assets/logo.png" width="160" height="80" alt="" class="d-md-none">
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" href="#inicio">Inicio</a>
+        <a class="nav-link" href="#propuestas">Propuestas</a>
+        <a class="nav-link" href="#galeria">Galería</a>
+        <a class="nav-link" href="#faq">Preguntas frecuentes</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -39,8 +33,9 @@
   <div class="container-content">
     <div class="container-content-titles">
       <h2>
-        FESTEJÁ EN <span class="highlight">TIVOLI fest</span>, EL SALÓN MÁS
-        GRANDE DE ZONA SUR
+        <span class="highlight">TIVOLI fest</span>
+        <br>
+        EL SALÓN MÁS GRANDE DE ZONA SUR
       </h2>
       <p>
         Ubicados en Banfield Oeste, en
@@ -88,6 +83,7 @@
         <p>{{ button.title }}</p>
       </button>
     </div>
+  </div>
   </div>
   <div class="container-section-3" id="faq">
     <mat-accordion>
@@ -261,20 +257,9 @@
         </a>
       </li>
       <li class="icon-elem">
-        <a href="https://www.facebook.com/" class="icon">
+        <a href="https://www.facebook.com/tivolifestbanfield" class="icon">
           <ion-icon name="logo-facebook"></ion-icon>
         </a>
-      </li>
-    </ul>
-    <ul class="menu">
-      <li class="menu-elem">
-        <a href="" class="menu-icon">Instagram</a>
-      </li>
-      <li class="menu-elem">
-        <a href="" class="menu-icon">WhatsApp</a>
-      </li>
-      <li class="menu-elem">
-        <a href="" class="menu-icon">Facebook</a>
       </li>
     </ul>
     <p class="text">2025 | Todos los derechos reservados</p>
